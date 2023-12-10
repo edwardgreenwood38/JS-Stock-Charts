@@ -7,9 +7,9 @@ async function main() {
     const highestPriceChartCanvas = document.querySelector('#highest-price-chart');
     const averagePriceChartCanvas = document.querySelector('#average-price-chart');
 
-    const response = await fetch("https://api.twelvedata.com/time_series?symbol=AAPL,DIS,MSFT,BNTX&interval=1day&apikey=a0e2fca97e044c11acb86f89c5cf6b3c");
+    //const response = await fetch("https://api.twelvedata.com/time_series?symbol=AAPL,DIS,MSFT,BNTX&interval=1day&apikey=a0e2fca97e044c11acb86f89c5cf6b3c");
     //   &interval=2min
-    //const data = mockData;
+    //const jsonData = mockData;
     //const textString = response.text()
     //const data = response.json()
     //console.log(data.GME.values)
@@ -17,11 +17,11 @@ async function main() {
     //console.log(response);
     //console.log(`Own property names: ${Object.getOwnPropertyNames(response.json())}`);
     //console.log(response.json())
-    const jsonData = await response.json()
+    ////const jsonData = await response.json()
     //console.log(jsonData.AAPL.meta.symbol)
-    console.log(jsonData)
+    ////console.log(jsonData)
 
-    const { AAPL, MSFT, DIS, BNTX } = jsonData;
+    const { AAPL, MSFT, DIS, BNTX } = mockData;
 
     const stocks = [AAPL, MSFT, DIS, BNTX];
 
@@ -58,19 +58,33 @@ async function main() {
     //console.log(values);
 
     //lineColor = 'rgb(0,0,255)'
+    // new Chart(timeChartCanvas.getContext('2d'), {
+    //     type: 'line',
+    //     data: {
+    //         labels: stocks[0].values.map(v => v.datetime),
+    //         datasets: stocks.map( s => ({
+    //             label: s.meta.symbol,
+    //             data: s.values.map(v => parseFloat(v.high)),
+    //             backgroundColor: getColor(s.meta.symbol),
+    //             borderColor: getColor(s.meta.symbol) 
+    //             }),
+    //         )
+    //     }
+    // })   
+    
     new Chart(timeChartCanvas.getContext('2d'), {
         type: 'line',
         data: {
-            labels: stocks[0].values.map(v => v.datetime),
-            datasets: stocks.map( s => ({
-                label: s.meta.symbol,
-                data: s.values.map(v => parseFloat(v.high)),
-                backgroundColor: getColor(s.meta.symbol),
-                borderColor: getColor(s.meta.symbol) 
-                }),
-            )
+            labels: stocks[0].values.map(value => value.datetime),
+            datasets: stocks.map( stock => ({
+                label: stock.meta.symbol,
+                data: stock.values.map(value => parseFloat(value.high)),
+                backgroundColor:  getColor(stock.meta.symbol),
+                borderColor: getColor(stock.meta.symbol),
+            }))
         }
-    })       
+    });
+    
 
 
 
