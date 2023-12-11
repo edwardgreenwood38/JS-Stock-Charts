@@ -9,7 +9,7 @@ async function main() {
     // const response = fetch('https://api.twelvedata.com/time_series?symbol=BNTX,DIS,GME,MSFTX&interval=1day&apikey=a0e2fca97e044c11acb86f89c5cf6b3c');
     // let jsonData = response.json();
     // console.log(jsonData);
-    //****************************** note: not getting expect joson formatted data back ******************************/
+    //****************************** note: not getting expected json formatted data back  ******************************/
 
     
     //========  example code
@@ -27,11 +27,10 @@ async function main() {
     // This is an example of "destructuring" an object
     // "Destructuring" creates new variables from an object or an array
 
-    console.log(Chart);
+    //console.log(Chart);
 
     // start of chart for 1. Stock Price Over Time
     //const ctx = document.getElementById('myChart');
-
     stocks.forEach( stock => stock.values.reverse());
 
     new Chart(timeChartCanvas.getContext('2d'), {
