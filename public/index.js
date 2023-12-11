@@ -61,9 +61,13 @@ async function main() {
           }))
         }
       });
+
+
+      
 }
 
 function getColor(stock){
+    //console.log(`stock for color: ${stock}`)
     if(stock === "GME"){
         return 'rgba(61, 161, 61, 0.7)'
     }
@@ -93,8 +97,8 @@ function getHighestValue(stock) {
     
     let highValue = [];
     highValue.push(highValueStr);
-    console.log(`end high: ${highValue}`);
-    console.log(typeof highValue);
+    //console.log(`end high: ${highValue}`);
+    //console.log(typeof highValue);
     return highValue;
 }
 
