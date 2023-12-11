@@ -27,7 +27,9 @@ async function main() {
     // This is an example of "destructuring" an object
     // "Destructuring" creates new variables from an object or an array
 
-    console.log(GME)
+    console.log(Chart);
+
+
 }
 
 main()
