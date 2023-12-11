@@ -29,7 +29,26 @@ async function main() {
 
     console.log(Chart);
 
+    // start of chart for 1. Stock Price Over Time
+    //onst ctx = document.getElementById('myChart');
 
+    new Chart(timeChartCanvas, {
+      type: 'bar',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+          label: '# of Votes',
+          data: [12, 19, 3, 5, 2, 3],
+          backgroundColor: [
+            'rgba(255, 99, 132, .2)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)'
+          ],
+          borderwidth: 1
+        }]
+      }
+    });
 }
 
 main()
