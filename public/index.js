@@ -46,6 +46,21 @@ async function main() {
         }))
       }
     });
+
+
+    //#####  2. Highest Stock Price
+    new Chart(highestPriceChartCanvas.getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: stocks.map(stock => stock.meta.symbol),
+          datasets: stocks.map( stock => ({
+              label: stock.meta.symbol,
+              data: getHighestValue(stock.values), //stock.values.map( v => parseFloat(v.high)),
+              backgroundcolor: getColor(stock.meta.symbol),
+              borderColor: getColor(stock.meta.symbol)
+          }))
+        }
+      });
 }
 
 function getColor(stock){
@@ -61,6 +76,26 @@ function getColor(stock){
     if(stock === "BNTX"){
         return 'rgba(166, 43, 158, 0.7)'
     }
+}
+
+function getHighestValue(stock) {
+    let highValueStr = 0;
+    //console.log(`0: ${stock[0].high}`);
+
+    for (let i = 0; i < stock.length; i++) {
+        //console.log(`stock[${i}] price: ${stock[i].high}`)
+        if (stock[i].high > highValueStr) {
+            //console.log(`${i}: ${stock[i].high}`);
+            highValueStr = stock[i].high;
+            //console.log(`new high: ${highValueStr}`);
+        }
+    }
+    
+    let highValue = [];
+    highValue.push(highValueStr);
+    console.log(`end high: ${highValue}`);
+    console.log(typeof highValue);
+    return highValue;
 }
 
 
