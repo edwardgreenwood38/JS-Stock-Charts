@@ -32,10 +32,10 @@ async function main() {
     // start of chart for 1. Stock Price Over Time
     //onst ctx = document.getElementById('myChart');
 
-    new Chart(timeChartCanvas, {
-      type: 'bar',
+    new Chart(timeChartCanvas.getContext('2d'), {
+      type: 'line',
       data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: stocks[0].values.map( v => v.datetime),
         datasets: [{
           label: '# of Votes',
           data: [12, 19, 3, 5, 2, 3],
