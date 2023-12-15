@@ -6,14 +6,14 @@ async function main() {
     const highestPriceChartCanvas = document.querySelector('#highest-price-chart');
     const averagePriceChartCanvas = document.querySelector('#average-price-chart');
 
-    // const response = fetch('https://api.twelvedata.com/time_series?symbol=BNTX,DIS,GME,MSFTX&interval=1day&apikey=a0e2fca97e044c11acb86f89c5cf6b3c');
-    // let jsonData = response.json();
+    const response = await fetch('https://api.twelvedata.com/time_series?symbol=BNTX,DIS,GME,MSFTX&interval=1day&apikey=a0e2fca97e044c11acb86f89c5cf6b3c');
+    let jsonData = await response.json();
     // console.log(jsonData);
     //****************************** note: not getting expected json formatted data back  ******************************/
 
     
     //========  example code
-    let result = mockData;
+    let result = jsonData;
     let GME = result.GME
     let MSFT = result.MSFT
     let DIS = result.DIS
@@ -82,8 +82,9 @@ function getColor(stock){
 }
 
 function getHighestValue(stock) {
-    let highValueStr = 0;
+    let highValueStr = [];
     //console.log(`0: ${stock[0].high}`);
+
 
     for (let i = 0; i < stock.length; i++) {
         //console.log(`stock[${i}] price: ${stock[i].high}`)
